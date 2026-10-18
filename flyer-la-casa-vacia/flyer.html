@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La casa vacía de las palabras</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Special+Elite&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#e9e4df; --paper2:#d9d2cf; --ink:#1d1b1f; --soft:#5b5560;
+    --rose:#a8787c; --lilac:#8c86a0; --line:#2a272c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1600px;height:1200px;overflow:hidden;background:var(--paper)}
+  .flyer{
+    position:relative;width:1600px;height:1200px;overflow:hidden;
+    background:
+      radial-gradient(ellipse 70% 60% at 28% 55%, #f4f0ec 0%, transparent 70%),
+      radial-gradient(ellipse 60% 70% at 100% 0%, #cfc6cf 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 0% 100%, #d4c6c4 0%, transparent 70%),
+      var(--paper);
+    color:var(--ink);font-family:'Cormorant Garamond',serif;
+  }
+  .grain{position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;pointer-events:none}
+  .vignette{position:absolute;inset:0;box-shadow:inset 0 0 220px rgba(40,30,40,.28);pointer-events:none}
+
+  /* left: the house */
+  .house{position:absolute;left:70px;top:150px;width:640px;height:900px}
+
+  /* faint ghost words drifting */
+  .ghost{position:absolute;font-family:'Special Elite',monospace;color:var(--soft);letter-spacing:.08em}
+
+  /* right column */
+  .text{position:absolute;left:800px;top:120px;width:700px}
+  .kicker{font-family:'Jost',sans-serif;font-weight:300;font-size:19px;letter-spacing:.3em;white-space:nowrap;text-transform:uppercase;color:var(--soft);display:flex;align-items:center;gap:18px}
+  .kicker::after{content:"";flex:1 1 auto;height:1px;background:var(--soft);opacity:.6}
+  h1{margin-top:34px;font-weight:300;line-height:.9;letter-spacing:-.01em}
+  h1 .l1{display:block;font-size:64px;font-style:italic;color:var(--soft)}
+  h1 .l2{display:block;font-size:150px;font-weight:400;margin-left:-6px}
+  h1 .l3{display:block;font-size:64px;font-style:italic;color:var(--soft);margin-top:10px;padding-left:180px}
+  h1 .l4{display:block;font-size:132px;font-weight:400;margin-top:-4px}
+  h1 .l4 em{font-style:italic;color:var(--rose);font-weight:300}
+  .sub{margin-top:36px;font-size:30px;line-height:1.35;font-style:italic;max-width:620px;color:#38333a}
+  .sub b{font-style:normal;font-weight:500;color:var(--ink)}
+
+  .sessions{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(29,27,31,.35);border-bottom:1px solid rgba(29,27,31,.35)}
+  .s{padding:22px 26px 24px 0}
+  .s + .s{padding-left:30px;border-left:1px solid rgba(29,27,31,.25)}
+  .s .tag{font-family:'Jost',sans-serif;font-size:15px;letter-spacing:.32em;text-transform:uppercase;color:var(--soft);display:flex;align-items:center;gap:10px}
+  .s .tag svg{width:22px;height:22px}
+  .s .day{margin-top:10px;font-size:36px;font-weight:500;line-height:1.05}
+  .s .day i{font-weight:300}
+  .s .hour{margin-top:6px;font-family:'Special Elite',monospace;font-size:20px;color:#3a353c}
+  .choose{position:absolute;right:0;margin-top:-14px;transform:translateY(-100%);font-family:'Special Elite',monospace;font-size:16px;color:var(--rose);background:var(--paper);padding:0 10px}
+
+  .footer{margin-top:34px;display:flex;gap:44px;align-items:flex-start}
+  .f .k{font-family:'Jost',sans-serif;font-size:14px;letter-spacing:.32em;text-transform:uppercase;color:var(--soft)}
+  .f .v{margin-top:6px;font-size:27px;line-height:1.15}
+  .f .v small{display:block;font-family:'Special Elite',monospace;font-size:17px;color:var(--rose);margin-top:6px}
+  .stamp{position:absolute;right:70px;bottom:62px;width:150px;height:150px;transform:rotate(-12deg);opacity:.85}
+
+  .margin-note{position:absolute;left:70px;bottom:52px;font-family:'Special Elite',monospace;font-size:16px;color:var(--soft);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="flyer">
+  <svg class="grain" width="1600" height="1200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .25  0 0 0 0 .2  0 0 0 0 .25  0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+  <!-- ghost words -->
+  <span class="ghost" style="left:96px;top:70px;font-size:18px;opacity:.45">ventana</span>
+  <span class="ghost" style="left:560px;top:96px;font-size:15px;opacity:.35;transform:rotate(-8deg)">silencio</span>
+  <span class="ghost" style="left:640px;top:250px;font-size:22px;opacity:.40;transform:rotate(14deg)">eco</span>
+  <span class="ghost" style="left:600px;top:400px;font-size:16px;opacity:.30;transform:rotate(-20deg)">recuerdo</span>
+  <span class="ghost" style="left:690px;top:520px;font-size:14px;opacity:.28;transform:rotate(30deg)">tú</span>
+  <span class="ghost" style="left:120px;top:1040px;font-size:15px;opacity:.35">polvo · luz · cuaderno</span>
+
+  <!-- the empty house, words escaping like birds -->
+  <svg class="house" viewBox="0 0 640 900" fill="none" stroke="var(--line)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- moon -->
+    <circle cx="470" cy="120" r="46" fill="#f6f2ee" stroke="none" opacity=".9"/>
+    <circle cx="488" cy="108" r="44" fill="url(#moonmask)" stroke="none"/>
+    <defs>
+      <radialGradient id="moonmask"><stop offset="0" stop-color="#e3dcd8"/><stop offset="1" stop-color="#e3dcd8" stop-opacity=".0"/></radialGradient>
+      <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3d9c8" stop-opacity=".9"/><stop offset="1" stop-color="#e8c3b5" stop-opacity=".25"/></linearGradient>
+      <linearGradient id="spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d6c6" stop-opacity=".55"/><stop offset="1" stop-color="#f1d6c6" stop-opacity="0"/></linearGradient>
+    </defs>
+
+    <!-- ground line -->
+    <path d="M10 760 C 160 752, 420 768, 630 756" stroke-width="1.4" opacity=".7"/>
+    <path d="M60 776 C 200 772, 380 782, 560 774" stroke-width="1" opacity=".35"/>
+
+    <!-- light spilling from door -->
+    <path d="M236 758 L 300 758 L 380 880 L 150 880 Z" fill="url(#spill)" stroke="none"/>
+
+    <!-- house body (slightly hand-drawn) -->
+    <path d="M110 758 L 112 420 L 268 268 L 426 418 L 428 758" stroke-width="2.4"/>
+    <path d="M86 440 L 268 262 L 452 438" stroke-width="2.4"/>
+    <!-- chimney -->
+    <path d="M360 350 L 360 286 L 392 286 L 392 380" stroke-width="2.2"/>
+    <!-- smoke made of a sentence -->
+    <path id="smoke" d="M376 280 C 360 230, 420 210, 400 160 S 450 90, 430 40" stroke="none"/>
+    <text font-family="Special Elite" font-size="15" fill="var(--soft)" stroke="none" opacity=".75"><textPath href="#smoke">una palabra que no quiso irse…</textPath></text>
+
+    <!-- window lit -->
+    <rect x="160" y="480" width="78" height="92" fill="url(#glow)" stroke-width="2"/>
+    <path d="M199 480 L 199 572 M160 526 L 238 526" stroke-width="1.6"/>
+    <!-- dark window -->
+    <rect x="300" y="480" width="78" height="92" stroke-width="2" fill="#2a272c" fill-opacity=".06"/>
+    <path d="M339 480 L 339 572 M300 526 L 378 526" stroke-width="1.6" opacity=".7"/>
+
+    <!-- attic round window -->
+    <circle cx="268" cy="370" r="26" stroke-width="1.8"/>
+    <circle cx="268" cy="370" r="26" fill="url(#glow)" stroke="none" opacity=".5"/>
+
+    <!-- open door -->
+    <rect x="236" y="628" width="64" height="130" fill="url(#glow)" stroke-width="2"/>
+    <path d="M236 628 L 206 644 L 206 770 L 236 758" stroke-width="2" fill="var(--paper)" fill-opacity=".8"/>
+    <circle cx="214" cy="702" r="2.4" fill="var(--line)"/>
+
+    <!-- letters escaping through the window like birds -->
+    <g font-family="Cormorant Garamond" font-style="italic" fill="var(--ink)" stroke="none">
+      <text x="208" y="452" font-size="38" opacity=".85" transform="rotate(-10 208 452)">a</text>
+      <text x="160" y="400" font-size="30" opacity=".7" transform="rotate(12 160 400)">m</text>
+      <text x="112" y="330" font-size="34" opacity=".6" transform="rotate(-18 112 330)">o</text>
+      <text x="150" y="250" font-size="26" opacity=".5" transform="rotate(20 150 250)">r</text>
+      <text x="74" y="200" font-size="24" opacity=".4" transform="rotate(-6 74 200)">v</text>
+      <text x="168" y="150" font-size="20" opacity=".32" transform="rotate(16 168 150)">u</text>
+      <text x="100" y="96" font-size="18" opacity=".26">e</text>
+      <text x="214" y="70" font-size="16" opacity=".2" transform="rotate(-14 214 70)">l</text>
+      <text x="300" y="42" font-size="14" opacity=".16">v</text>
+      <text x="40" y="40" font-size="13" opacity=".14">e</text>
+    </g>
+    <!-- tiny birds -->
+    <g stroke-width="1.4" opacity=".55">
+      <path d="M540 230 q 8 -8 16 0 q 8 -8 16 0"/>
+      <path d="M580 280 q 6 -6 12 0 q 6 -6 12 0"/>
+      <path d="M520 300 q 5 -5 10 0 q 5 -5 10 0"/>
+    </g>
+
+    <!-- chair waiting outside -->
+    <g stroke-width="1.8">
+      <path d="M500 760 L 500 690 L 548 690 L 548 760"/>
+      <path d="M500 720 L 548 720 M 500 690 L 500 640 L 548 640 L 548 690"/>
+      <path d="M508 640 L 508 690 M 540 640 L 540 690" opacity=".5"/>
+    </g>
+    <!-- open notebook on the chair -->
+    <path d="M498 718 Q 512 708 524 718 Q 536 708 550 718" stroke-width="1.6"/>
+
+    <!-- grass marks -->
+    <g stroke-width="1.2" opacity=".55">
+      <path d="M60 762 l 4 -14 M66 762 l -3 -10 M440 762 l 3 -12 M446 762 l -4 -9 M590 760 l 3 -12 M596 760 l -2 -8"/>
+    </g>
+  </svg>
+
+  <div class="text">
+    <div class="kicker">Taller gratuito · escritura creativa</div>
+    <h1>
+      <span class="l1">la</span>
+      <span class="l2">Casa Vacía</span>
+      <span class="l3">de las</span>
+      <span class="l4"><em>Palabras</em></span>
+    </h1>
+    <p class="sub">para reabrir tu creatividad, <b>volver a ti</b> y re-encontrarte con el juego de escribir.</p>
+
+    <div style="position:relative">
+      <span class="choose">elige una puerta ↓</span>
+      <div class="sessions">
+        <div class="s">
+          <div class="tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+            Noche
+          </div>
+          <div class="day">Viernes <i>30 de octubre</i></div>
+          <div class="hour">7:00 p. m. — 9:30 p. m.</div>
+        </div>
+        <div class="s">
+          <div class="tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+            Mañana
+          </div>
+          <div class="day">Sábado <i>31 de octubre</i></div>
+          <div class="hour">10:00 a. m. — 12:30 p. m.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="f">
+        <div class="k">Modalidad</div>
+        <div class="v">En vivo por Zoom</div>
+      </div>
+      <div class="f">
+        <div class="k">Entrada</div>
+        <div class="v">Gratuita con registro previo<small>* cupos limitados</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- postal-style stamp -->
+  <svg class="stamp" viewBox="0 0 150 150" fill="none" stroke="var(--rose)">
+    <circle cx="75" cy="75" r="68" stroke-width="2"/>
+    <circle cx="75" cy="75" r="56" stroke-width="1" stroke-dasharray="3 4"/>
+    <defs><path id="ring" d="M75 75 m -48 0 a 48 48 0 1 1 96 0 a 48 48 0 1 1 -96 0"/></defs>
+    <text font-family="Jost" font-size="11.5" letter-spacing="3.2" fill="var(--rose)" stroke="none"><textPath href="#ring">ENTRADA LIBRE · CUPOS LIMITADOS · </textPath></text>
+    <text x="75" y="88" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="34" fill="var(--rose)" stroke="none">gratis</text>
+  </svg>
+
+  <div class="margin-note">— trae un cuaderno, una taza y lo que queda de ti.</div>
+</div>
+</body>
+</html>
