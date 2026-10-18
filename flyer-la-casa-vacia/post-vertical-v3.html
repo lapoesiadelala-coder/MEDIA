@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La casa vacía · post v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#e7ccc4; --ink:#1b1416; --wine:#7a2c38; --cream:#f4ebe3; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1350px;overflow:hidden;background:var(--bg)}
+  .post{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--bg);color:var(--ink)}
+  .bar{position:absolute;top:44px;left:60px;right:60px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-weight:500;font-size:20px;letter-spacing:.08em;text-transform:uppercase}
+  svg.head{position:absolute;left:0;top:0}
+  .sub{position:absolute;left:60px;top:856px;width:900px;font-family:'Instrument Serif',serif;font-size:34px;line-height:1.12}
+  .sub em{color:var(--wine)}
+  .dates{position:absolute;left:60px;right:60px;top:960px;display:grid;grid-template-columns:1fr 1fr;border-top:3px solid var(--ink)}
+  .d{padding-top:18px}
+  .d + .d{border-left:3px solid var(--ink);padding-left:28px}
+  .d .k{font-family:'DM Mono',monospace;font-size:19px;letter-spacing:.1em;text-transform:uppercase;color:var(--wine)}
+  .d .day{font-family:'Anton',sans-serif;font-size:76px;line-height:1;margin-top:8px;text-transform:uppercase}
+  .d .hr{font-family:'DM Mono',monospace;font-weight:500;font-size:29px;margin-top:8px}
+  .band{position:absolute;left:0;right:0;bottom:0;height:178px;background:var(--ink);color:var(--cream);padding:30px 60px 0;display:grid;grid-template-columns:auto 1fr;column-gap:36px;align-items:start}
+  .cta{font-family:'Anton',sans-serif;font-size:62px;line-height:1;text-transform:uppercase;color:var(--bg)}
+  .facts{font-family:'DM Mono',monospace;font-size:19px;line-height:1.55;text-transform:uppercase;letter-spacing:.05em;padding-top:2px}
+  .note{grid-column:1 / -1;margin-top:18px;font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;color:#cdbab3}
+  .note b{font-weight:400;color:var(--cream)}
+  .grain{position:absolute;inset:0;opacity:.22;mix-blend-mode:multiply;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="bar"><span>Taller gratuito</span><span>Escritura creativa</span><span>En vivo · Zoom</span></div>
+
+  <svg class="head" width="1080" height="840" viewBox="0 0 1080 840">
+    <defs>
+      <clipPath id="hollow">
+        <text x="60" y="726" font-family="Anton" font-size="292" textLength="960" lengthAdjust="spacingAndGlyphs">VACÍA</text>
+      </clipPath>
+    </defs>
+    <!-- "la" -->
+    <text x="62" y="118" font-family="Instrument Serif" font-style="italic" font-size="56" fill="#7a2c38">la</text>
+    <!-- CASA: solid -->
+    <text x="58" y="386" font-family="Anton" font-size="318" textLength="964" lengthAdjust="spacingAndGlyphs" fill="#1b1416">CASA</text>
+    <!-- VACÍA: literally empty, only ghost words left inside -->
+    <g clip-path="url(#hollow)" id="ghosts" font-family="DM Mono" font-size="15" fill="#7a2c38"></g>
+    <text x="60" y="726" font-family="Anton" font-size="292" textLength="960" lengthAdjust="spacingAndGlyphs" fill="none" stroke="#1b1416" stroke-width="3.5">VACÍA</text>
+    <!-- de las palabras -->
+    <text x="58" y="826" font-family="Instrument Serif" font-style="italic" font-size="118" fill="#1b1416">de las <tspan fill="#7a2c38">palabras</tspan></text>
+  </svg>
+
+  <p class="sub">Para reabrir tu creatividad, volver a ti y<br><span style="white-space:nowrap">re-encontrarte</span> con <em>el juego de escribir.</em></p>
+
+  <div class="dates">
+    <div class="d"><div class="k">☾ Noche</div><div class="day">Vie 30 oct</div><div class="hr">7:00 – 9:30 p. m.</div></div>
+    <div class="d"><div class="k">☀ Mañana</div><div class="day">Sáb 31 oct</div><div class="hr">10:00 a. m. – 12:30 p. m.</div></div>
+  </div>
+
+  <div class="band">
+    <div class="cta">Reserva tu lugar →</div>
+    <div class="facts">Gratis con registro<br>Cupos limitados</div>
+    <div class="note">trae un cuaderno, una taza y <b>ganas de escribir.</b></div>
+  </div>
+
+  <svg class="grain" width="1080" height="1350"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .3  0 0 0 0 .2  0 0 0 0 .2  0 0 0 .6 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</div>
+<script>
+  let seed = 5; const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const words = ["recuerdo","silencio","ventana","eco","polvo","luz","cuaderno","voz","infancia","nombre","carta","olvido","verso","lluvia","hoja","tinta","umbral","jardín","ausencia","pasillo","abrazo","taza","otoño","memoria","domingo","cajón","patio","volver","escribir","tú"];
+  const g = document.getElementById("ghosts"), NS = "http://www.w3.org/2000/svg";
+  for (let y = 400; y < 730; y += 19) {
+    let x = 40 - r() * 50, line = "";
+    while (line.length < 130) line += words[Math.floor(r() * words.length)] + " · ";
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("x", x); t.setAttribute("y", y); t.setAttribute("opacity", (.45 + r() * .4).toFixed(2));
+    t.textContent = line; g.appendChild(t);
+  }
+</script>
+</body>
+</html>
