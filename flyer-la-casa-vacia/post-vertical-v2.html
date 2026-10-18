@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La casa vacía · post v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Special+Elite&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --night:#1f1b23; --paper:#f3ece6; --mist:#a89fae; --rose:#e0a7a3; --ink:#2a2026; --deep:#7d4f55; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1350px;overflow:hidden;background:var(--night)}
+  .post{position:relative;width:1080px;height:1350px;overflow:hidden;color:var(--paper);font-family:'Cormorant Garamond',serif;
+    background:linear-gradient(180deg,#2a2430 0%,#241f29 64%,#1a171d 64.2%,#141216 100%)}
+  svg.scene{position:absolute;inset:0}
+  .grain{position:absolute;inset:0;opacity:.45;mix-blend-mode:overlay;pointer-events:none}
+
+  .kicker{position:absolute;top:70px;left:0;right:0;text-align:center;font-family:'Jost',sans-serif;font-weight:500;font-size:19px;letter-spacing:.36em;text-transform:uppercase;color:var(--paper)}
+  .kicker span{background:#241f29;padding:6px 18px;box-shadow:0 0 30px 18px #241f29}
+
+  /* title lives inside the light of the door */
+  .door-text{position:absolute;left:350px;width:380px;top:190px;text-align:center;color:var(--ink)}
+  .door-text .la{font-style:italic;font-size:40px;line-height:1;color:var(--deep)}
+  .door-text .big{font-size:122px;line-height:.86;font-weight:500;letter-spacing:-.02em}
+  .door-text .delas{font-style:italic;font-size:40px;line-height:1;color:var(--deep);margin-top:14px}
+  .door-text .pal{font-style:italic;font-size:104px;line-height:.95;font-weight:500;color:#8a4a52;letter-spacing:-.01em}
+  .door-text .sub{margin:22px auto 0;width:330px;font-style:italic;font-size:23px;line-height:1.28;color:#4a3b41}
+  .door-text .sub b{font-style:normal;font-weight:600;color:var(--ink)}
+
+  /* info on the floor: big, clean, no boxes */
+  .when{position:absolute;top:928px;left:60px;right:60px;display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;text-align:center}
+  .when .rule{height:120px;background:rgba(243,236,230,.3)}
+  .w .lab{font-family:'Jost',sans-serif;font-weight:500;font-size:16px;letter-spacing:.34em;text-transform:uppercase;color:var(--rose);display:flex;justify-content:center;align-items:center;gap:10px}
+  .w .lab svg{width:20px;height:20px}
+  .w .day{margin-top:10px;font-family:'Jost',sans-serif;font-weight:600;font-size:30px;letter-spacing:.06em;text-transform:uppercase}
+  .w .hr{margin-top:4px;font-size:38px;font-weight:500;font-style:italic;color:var(--paper)}
+  .or{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#18151b;padding:6px 0;font-style:italic;font-size:26px;color:var(--mist)}
+
+  .facts{position:absolute;top:1100px;left:0;right:0;text-align:center;font-family:'Jost',sans-serif;font-size:21px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper)}
+  .facts i{font-style:normal;color:var(--rose);margin:0 14px}
+
+  .cta{position:absolute;top:1152px;left:50%;transform:translateX(-50%);background:var(--rose);color:#1f1b23;border-radius:999px;padding:18px 40px;display:flex;align-items:center;gap:18px;white-space:nowrap;
+    font-family:'Jost',sans-serif;font-weight:600;font-size:21px;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 0 60px rgba(224,167,163,.35)}
+  .cta small{font-family:'Special Elite',monospace;font-weight:400;font-size:16px;letter-spacing:0;text-transform:none;opacity:.8;border-left:1px solid rgba(31,27,35,.35);padding-left:18px}
+
+  .note{position:absolute;bottom:46px;left:0;right:0;text-align:center;font-family:'Special Elite',monospace;font-size:19px;color:var(--mist)}
+  .note em{font-family:'Cormorant Garamond',serif;font-size:29px;color:var(--rose)}
+</style>
+</head>
+<body>
+<div class="post">
+  <svg class="scene" viewBox="0 0 1080 1350">
+    <defs>
+      <linearGradient id="light" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff1e2"/><stop offset=".55" stop-color="#fbd9bd"/><stop offset="1" stop-color="#f2b896"/>
+      </linearGradient>
+      <linearGradient id="spill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f6c8a4" stop-opacity=".3"/><stop offset=".55" stop-color="#f6c8a4" stop-opacity=".08"/><stop offset="1" stop-color="#f6c8a4" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="bloom" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f7cfae" stop-opacity=".38"/><stop offset="1" stop-color="#f7cfae" stop-opacity="0"/></radialGradient>
+      <linearGradient id="shadow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+    </defs>
+
+    <!-- the walls of the empty room: wallpaper made of ghost words -->
+    <g id="wall" font-family="Special Elite" font-size="17"></g>
+
+    <!-- bloom around the door -->
+    <ellipse cx="540" cy="520" rx="420" ry="460" fill="url(#bloom)"/>
+
+    <!-- baseboard + floor planks converging to the door -->
+    <line x1="0" y1="864" x2="1080" y2="864" stroke="#f3ece6" stroke-opacity=".25" stroke-width="1.2"/>
+    <g id="planks" stroke="#f3ece6" stroke-opacity=".06" stroke-width="1"></g>
+
+    <!-- light spilling across the floor towards us -->
+    <polygon points="340,864 740,864 1080,1350 0,1350" fill="url(#spill)"/>
+
+    <!-- door frame + light -->
+    <rect x="330" y="150" width="420" height="714" fill="url(#light)"/>
+    <rect x="330" y="150" width="420" height="714" fill="none" stroke="#f3ece6" stroke-opacity=".5" stroke-width="2"/>
+    <!-- open door leaf -->
+    <polygon points="330,150 262,188 262,890 330,864" fill="#17141a" stroke="#f3ece6" stroke-opacity=".35" stroke-width="1.4"/>
+    <circle cx="276" cy="540" r="4" fill="#e0a7a3"/>
+
+    <!-- lone chair in the doorway and its long shadow toward the viewer -->
+    <polygon points="600,864 650,864 700,1060 560,1060" fill="url(#shadow)" opacity=".7"/>
+    <g stroke="#2a2026" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M604 864 V752"/>
+      <path d="M604 808 H650 V864"/>
+      <path d="M604 772 h10"/>
+    </g>
+    <!-- a sheet of paper on the floor, half in light -->
+    <polygon points="430,846 486,838 494,858 438,866" fill="#fff8f1" stroke="#2a2026" stroke-opacity=".25"/>
+  </svg>
+
+  <div class="kicker"><span>Taller gratuito de escritura creativa</span></div>
+
+  <div class="door-text">
+    <div class="la">la</div>
+    <div class="big">casa<br>vacía</div>
+    <div class="delas">de las</div>
+    <div class="pal">palabras</div>
+    <p class="sub">para reabrir tu creatividad, <b>volver a ti</b> y re-encontrarte con el juego de escribir</p>
+  </div>
+
+  <div class="when">
+    <div class="w">
+      <div class="lab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>Noche</div>
+      <div class="day">Viernes 30 oct</div>
+      <div class="hr">7:00 – 9:30 p. m.</div>
+    </div>
+    <div class="rule"></div>
+    <div class="w">
+      <div class="lab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>Mañana</div>
+      <div class="day">Sábado 31 oct</div>
+      <div class="hr">10:00 a. m. – 12:30 p. m.</div>
+    </div>
+  </div>
+
+  <div class="facts">En vivo por Zoom<i>·</i>Gratis con registro</div>
+  <div class="cta">Reserva tu lugar →<small>cupos limitados</small></div>
+
+  <div class="note">— trae un cuaderno, una taza y <em>ganas de escribir.</em></div>
+
+  <svg class="grain" width="1080" height="1350"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .6  0 0 0 0 .55  0 0 0 0 .6  0 0 0 .5 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</div>
+
+<script>
+  let seed = 11; const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const words = ["palabra","recuerdo","silencio","ventana","eco","polvo","luz","cuaderno","voz","infancia","nombre","carta","olvido","juego","verso","lluvia","nosotros","hoja","tinta","umbral","nostalgia","jardín","sueño","ausencia","pasillo","abrazo","taza","otoño","lápiz","memoria","casa","domingo","retrato","cajón","madre","patio","invierno"];
+  const NS = "http://www.w3.org/2000/svg";
+  const wall = document.getElementById("wall");
+  // wallpaper rows; words glow brighter the closer they are to the door's light
+  for (let y = 24; y < 860; y += 27) {
+    let x = -20 - r() * 60;
+    while (x < 1100) {
+      const w = words[Math.floor(r() * words.length)];
+      const len = w.length * 9.6;
+      const cx = x + len / 2, dx = Math.max(0, Math.abs(cx - 540) - 210), dy = Math.max(0, Math.abs(y - 500) - 360);
+      const d = Math.hypot(dx, dy);
+      const op = Math.max(.035, .17 - d / 2400) * (.5 + r() * .6);
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("x", x.toFixed(1)); t.setAttribute("y", y);
+      t.setAttribute("fill", "#f3ece6"); t.setAttribute("opacity", op.toFixed(2));
+      t.textContent = w;
+      wall.appendChild(t);
+      if (r() < .06) { // crossed-out drafts
+        const l = document.createElementNS(NS, "line");
+        l.setAttribute("x1", x); l.setAttribute("x2", x + len); l.setAttribute("y1", y - 5); l.setAttribute("y2", y - 6);
+        l.setAttribute("stroke", "#e0a7a3"); l.setAttribute("stroke-opacity", .35); l.setAttribute("stroke-width", 1.4);
+        wall.appendChild(l);
+      }
+      x += len + 22 + r() * 14;
+    }
+  }
+  // two words that refuse to fade
+  [["volver", 120, 348], ["escribir", 838, 618], ["tú", 186, 726]].forEach(([w, x, y]) => {
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("x", x); t.setAttribute("y", y); t.setAttribute("fill", "#e0a7a3");
+    t.setAttribute("font-size", 22); t.textContent = w; wall.appendChild(t);
+  });
+  // floor planks converging toward the doorway
+  const P = document.getElementById("planks");
+  for (let i = -8; i <= 8; i++) {
+    const l = document.createElementNS(NS, "line");
+    l.setAttribute("x1", 540 + i * 40); l.setAttribute("y1", 864);
+    l.setAttribute("x2", 540 + i * 190); l.setAttribute("y2", 1350);
+    P.appendChild(l);
+  }
+</script>
+</body>
+</html>
