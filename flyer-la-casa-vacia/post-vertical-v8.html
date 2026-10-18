@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La casa vacía · post v8</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Caveat:wght@400;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --night:#1d1a20; --cream:#f2ebe3; --mist:#a59ca8; --rose:#e0a7a3; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1350px;overflow:hidden;background:var(--night)}
+  .post{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--night);color:var(--cream)}
+  svg.scene{position:absolute;inset:0}
+  .flank span{position:absolute;white-space:nowrap}
+  .t1{top:98px;font-family:'Jost',sans-serif;font-weight:600;font-size:66px;letter-spacing:.08em;text-transform:uppercase;line-height:1}
+  .t1.l{right:640px;color:var(--cream)} .t1.r{left:640px;color:var(--rose)}
+  .t2{top:236px;font-family:'Instrument Serif',serif;font-style:italic;font-size:70px;line-height:1;color:var(--cream)}
+  .t2.l{right:730px} .t2.r{left:730px}
+  .kicker{position:absolute;top:58px;left:0;right:0;text-align:center;font-family:'Jost',sans-serif;font-weight:500;font-size:18px;letter-spacing:.38em;text-transform:uppercase;color:var(--mist)}
+
+  h1{position:absolute;top:758px;left:0;right:0;text-align:center;font-family:'Instrument Serif',serif;font-weight:400;line-height:.98}
+  h1 .a{display:block;font-size:98px;letter-spacing:-.01em}
+  h1 .b{display:block;font-size:98px;font-style:italic;color:var(--rose)}
+  .sub{position:absolute;top:986px;left:0;right:0;text-align:center;font-family:'Instrument Serif',serif;font-size:34px;line-height:1.2;color:var(--cream);white-space:nowrap}
+
+  .dates{position:absolute;top:1092px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:'Jost',sans-serif;font-size:27px;letter-spacing:.05em}
+  .dates b{font-weight:600;letter-spacing:.12em}
+  .dates .o{font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;color:var(--mist)}
+  .dates span{color:#d8cfd3}
+
+  .meta{position:absolute;top:1184px;left:0;right:0;text-align:center;font-family:'Jost',sans-serif;font-size:16px;letter-spacing:.3em;text-transform:uppercase;color:var(--mist)}
+  .foot{position:absolute;top:1230px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:26px}
+  .cta{background:var(--rose);color:#1d1a20;border-radius:999px;padding:14px 30px;font-family:'Jost',sans-serif;font-weight:600;font-size:19px;letter-spacing:.2em;text-transform:uppercase}
+  .facts{font-family:'Jost',sans-serif;font-size:17px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);line-height:1.6}
+  .grain{position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="post">
+  <svg class="scene" viewBox="0 50 1080 1350">
+    <defs>
+      <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0dc"/><stop offset="1" stop-color="#f2b083"/></linearGradient>
+      <linearGradient id="spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5c49c" stop-opacity=".45"/><stop offset="1" stop-color="#f5c49c" stop-opacity="0"/></linearGradient>
+      <linearGradient id="flapL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ddd3ca"/><stop offset="1" stop-color="#c9beb5"/></linearGradient>
+      <linearGradient id="flapR" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3d9d0"/><stop offset="1" stop-color="#cfc4bb"/></linearGradient>
+      <filter id="soft"><feGaussianBlur stdDeviation="22"/></filter>
+      <filter id="soft2"><feGaussianBlur stdDeviation="8"/></filter>
+      <clipPath id="page"><polygon points="540,140 790,390 790,760 290,760 290,390"/></clipPath>
+    </defs>
+
+    <!-- shadow under the folded page -->
+    <ellipse cx="540" cy="770" rx="290" ry="16" fill="#000" opacity=".55" filter="url(#soft2)"/>
+    <!-- light leaking out of the door onto the dark -->
+    <ellipse cx="540" cy="730" rx="190" ry="130" fill="#f5c49c" opacity=".38" filter="url(#soft)"/>
+    <polygon points="510,762 570,760 690,850 400,852" fill="url(#spill)"/>
+
+    <g transform="rotate(-2.2 540 760)">
+    <!-- a notebook page, folded into a house -->
+    <polygon points="540,140 790,390 790,760 290,760 290,390" fill="#f2ebe3"/>
+    <g clip-path="url(#page)">
+      <!-- ruled lines + margin -->
+      <g stroke="#8fa3b8" stroke-opacity=".38" stroke-width="1.2" id="rules"></g>
+      <line x1="336" y1="140" x2="336" y2="760" stroke="#d98f8b" stroke-opacity=".6" stroke-width="1.4"/>
+      <!-- erased, ghost words -->
+      <g font-family="Caveat" fill="#8b8389" id="ghost"></g>
+      <!-- the only line still written -->
+      <text x="350" y="490" font-family="Caveat" font-weight="600" font-size="32" fill="#3a3140">un espacio de escritura creativa</text>
+      <text x="350" y="526" font-family="Caveat" font-weight="600" font-size="32" fill="#3a3140">para volver a ti</text>
+      <text x="350" y="562" font-family="Caveat" font-weight="600" font-size="32" fill="#3a3140">y al juego de escribir.</text>
+    </g>
+    <!-- folded corners (the back of the paper), making the roof -->
+    <polygon points="290,390 540,140 540,390" fill="url(#flapL)"/>
+    <polygon points="790,390 540,140 540,390" fill="url(#flapR)"/>
+    <path d="M290 390 L540 140 L790 390" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1"/>
+    <line x1="540" y1="140" x2="540" y2="390" stroke="#b5a99f" stroke-width="1"/>
+    <path d="M290 390 H790" stroke="#b9ada3" stroke-width="1" opacity=".7"/>
+
+    <!-- door cut out of the page, light coming through -->
+    <rect x="505" y="640" width="70" height="120" fill="url(#glow)"/>
+    <!-- the cut flap, folded open -->
+    <polygon points="505,640 470,652 470,770 505,760" fill="#d6ccc3"/>
+    <line x1="505" y1="640" x2="505" y2="760" stroke="#a89c93" stroke-width="1"/>
+    </g>
+    <!-- the words leaving the empty house -->
+    <g id="leaving" font-family="Instrument Serif" font-style="italic"></g>
+  </svg>
+
+  <div class="flank">
+    <span class="t1 l">Taller</span><span class="t1 r">Gratuito</span>
+  </div>
+
+  <h1><span class="a">La casa vacía</span><span class="b">de las palabras</span></h1>
+  <p class="sub">Para ti, que hace mucho no escribes<br>o no sabes cómo volver a hacerlo.</p>
+
+  <div class="dates">
+    <div><b>VIE 30 OCT</b> <span>· 7:00–9:30 p. m.</span></div>
+    <div><b>SÁB 31 OCT</b> <span>· 10:00 a. m.–12:30 p. m.</span></div>
+  </div>
+
+  <div class="meta">En vivo · Virtual · Cupos limitados</div>
+  <div class="foot"><div class="cta">Reserva tu lugar →</div></div>
+
+  <svg class="grain" width="1080" height="1350"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .6  0 0 0 0 .55  0 0 0 0 .6  0 0 0 .45 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</div>
+<script>
+  const NS = "http://www.w3.org/2000/svg";
+  const rules = document.getElementById("rules");
+  for (let y = 422; y < 760; y += 36) {
+    const l = document.createElementNS(NS, "line");
+    l.setAttribute("x1", 290); l.setAttribute("x2", 790); l.setAttribute("y1", y); l.setAttribute("y2", y);
+    rules.appendChild(l);
+  }
+  // half-erased words that once lived here
+  const ghost = document.getElementById("ghost");
+  [
+    [352, 415, "recuerdo", 28, .3], [620, 455, "silencio", 26, .24, 1],
+    [352, 674, "volver", 28, .28]
+  ].forEach(([x, y, w, fs, op, cross]) => {
+    if (!w) return;
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("x", x); t.setAttribute("y", y - 8); t.setAttribute("font-size", fs); t.setAttribute("opacity", op);
+    t.textContent = w; ghost.appendChild(t);
+    if (cross) {
+      const l = document.createElementNS(NS, "line");
+      l.setAttribute("x1", x - 2); l.setAttribute("x2", x + w.length * fs * .42); l.setAttribute("y1", y - 16); l.setAttribute("y2", y - 18);
+      l.setAttribute("stroke", "#8b8389"); l.setAttribute("stroke-opacity", op + .05); l.setAttribute("stroke-width", 1.4);
+      ghost.appendChild(l);
+    }
+  });
+  const L = document.getElementById("leaving");
+  [[536,722,24,"#6e3f45",-6],[596,700,25,"#6e3f45",8],[648,680,27,"#6e3f45",-10],[700,656,29,"#7a474d",10],
+   [752,626,31,"#8a5257",-6],[808,588,34,"#e0a7a3",12],[858,546,37,"#e0a7a3",-10],[906,498,41,"#e0a7a3",6]]
+  .forEach(([x,y,fs,c,rot],i)=>{
+    const t=document.createElementNS(NS,"text");
+    t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("font-size",fs);t.setAttribute("fill",c);
+    t.setAttribute("transform",`rotate(${rot} ${x} ${y})`);
+    t.textContent="palabras"[i];L.appendChild(t);
+  });
+</script>
+</body>
+</html>
