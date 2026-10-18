@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La casa vacía · post vertical</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Special+Elite&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#221e27; --night2:#2e2833; --paper:#ece5df; --mist:#a59cab;
+    --rose:#d39a98; --warm:#f5c9a6; --ink:#221e27;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1350px;overflow:hidden;background:var(--night)}
+  .post{
+    position:relative;width:1080px;height:1350px;overflow:hidden;color:var(--paper);
+    font-family:'Cormorant Garamond',serif;
+    background:
+      radial-gradient(ellipse 55% 38% at 50% 64%, rgba(245,201,166,.16) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 50% at 50% 0%, #3a3140 0%, transparent 70%),
+      linear-gradient(180deg,#2b2531 0%,#221e27 55%,#1b181f 100%);
+  }
+  .grain{position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;pointer-events:none}
+  .vignette{position:absolute;inset:0;box-shadow:inset 0 0 200px rgba(0,0,0,.55);pointer-events:none}
+  .ghost{position:absolute;font-family:'Special Elite',monospace;color:var(--mist);white-space:nowrap}
+  .ghost.x{text-decoration:line-through;text-decoration-color:rgba(211,154,152,.7)}
+
+  .top{position:absolute;top:66px;left:80px;right:80px;display:flex;align-items:center;gap:18px;
+    font-family:'Jost',sans-serif;font-weight:300;font-size:17px;letter-spacing:.34em;text-transform:uppercase;color:var(--mist)}
+  .top::before,.top::after{content:"";flex:1;height:1px;background:var(--mist);opacity:.45}
+
+  h1{position:absolute;top:112px;left:0;right:0;text-align:center;font-weight:300;line-height:.92}
+  h1 .a{display:block;font-size:112px;font-weight:400;letter-spacing:-.01em}
+  h1 .a i{font-weight:300;color:var(--mist);font-size:.62em;vertical-align:.32em;margin-right:.12em}
+  h1 .b{display:block;font-size:112px;font-style:italic;color:var(--rose)}
+  h1 .b i{font-style:italic;color:var(--mist);font-size:.62em;vertical-align:.32em;margin-right:.14em}
+
+  .house{position:absolute;left:0;top:0;width:1080px;height:1350px}
+
+  .sub{position:absolute;top:378px;left:0;right:0;text-align:center;font-style:italic;font-size:27px;line-height:1.3;color:#cfc6cc}
+  .sub b{font-style:normal;font-weight:500;color:var(--paper)}
+
+  .doors{position:absolute;top:952px;left:80px;right:80px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{position:relative;border:1px solid rgba(236,229,223,.28);padding:22px 24px 20px;background:rgba(34,30,39,.55);backdrop-filter:blur(2px)}
+  .card .tag{display:flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-size:14px;letter-spacing:.32em;text-transform:uppercase;color:var(--rose)}
+  .card .tag svg{width:20px;height:20px}
+  .card .day{margin-top:10px;font-size:34px;line-height:1.05;font-weight:500}
+  .card .day i{font-weight:300}
+  .card .hour{margin-top:8px;font-family:'Special Elite',monospace;font-size:19px;color:#cfc6cc}
+  .card .num{position:absolute;right:16px;top:8px;font-style:italic;font-size:56px;color:rgba(236,229,223,.1)}
+
+  .info{position:absolute;top:1128px;left:80px;right:80px;display:flex;align-items:center;justify-content:space-between}
+  .meta{font-family:'Jost',sans-serif;font-size:17px;letter-spacing:.22em;text-transform:uppercase;color:var(--mist);line-height:1.7}
+  .meta b{color:var(--paper);font-weight:400}
+  .cta{background:var(--rose);color:var(--ink);padding:18px 30px 17px;border-radius:999px;font-family:'Jost',sans-serif;font-weight:500;font-size:19px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:14px;box-shadow:0 0 50px rgba(211,154,152,.35)}
+  .cta small{display:block;font-family:'Special Elite',monospace;text-transform:none;letter-spacing:.02em;font-weight:400;font-size:15px;opacity:.75}
+
+  .note{position:absolute;bottom:56px;left:0;right:0;text-align:center;font-family:'Special Elite',monospace;font-size:19px;color:#cfc6cc;letter-spacing:.04em}
+  .note em{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--rose)}
+</style>
+</head>
+<body>
+<div class="post">
+  <div id="ghosts"></div>
+
+  <svg class="house" viewBox="0 0 1080 1350">
+    <defs>
+      <mask id="hm">
+        <polygon points="330,640 540,468 750,640 750,900 330,900" fill="#fff"/>
+        <rect x="497" y="755" width="86" height="145" fill="#000"/>
+        <rect x="380" y="672" width="64" height="72" fill="#000"/>
+      </mask>
+      <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2c4"/><stop offset="1" stop-color="#f0b48c"/></linearGradient>
+      <linearGradient id="spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5c9a6" stop-opacity=".45"/><stop offset="1" stop-color="#f5c9a6" stop-opacity="0"/></linearGradient>
+      <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+    </defs>
+
+    <!-- crescent moon -->
+    <path d="M905 470 a 34 34 0 1 0 22 -58 a 27 27 0 1 1 -22 58z" fill="none" stroke="#ece5df" stroke-width="1.4" opacity=".7"/>
+
+    <!-- light spill on the ground -->
+    <polygon points="497,900 583,900 700,990 380,990" fill="url(#spill)"/>
+    <rect x="480" y="740" width="120" height="170" fill="#f5c9a6" opacity=".35" filter="url(#blur)"/>
+
+    <!-- house walls built of ghost words -->
+    <g id="wordwall" mask="url(#hm)" font-family="Special Elite" font-size="14.5"></g>
+    <polygon points="330,640 540,468 750,640 750,900 330,900" fill="none" stroke="#ece5df" stroke-width="1.6" opacity=".85"/>
+    <path d="M300 664 L540 468 L780 664" fill="none" stroke="#ece5df" stroke-width="1.6" opacity=".85"/>
+    <!-- chimney -->
+    <rect x="655" y="520" width="34" height="72" fill="#221e27" stroke="#ece5df" stroke-width="1.6" opacity=".9"/>
+
+    <!-- lit window and empty open door -->
+    <rect x="380" y="672" width="64" height="72" fill="url(#glow)"/>
+    <path d="M412 672 v72 M380 708 h64" stroke="#221e27" stroke-width="2"/>
+    <rect x="497" y="755" width="86" height="145" fill="url(#glow)"/>
+    <path d="M497 755 L470 770 L470 912 L497 900 Z" fill="#2b2531" stroke="#ece5df" stroke-width="1.4"/>
+    <!-- a lone chair inside the empty doorway -->
+    <g stroke="#3a3140" stroke-width="2.2" fill="none" stroke-linecap="round">
+      <path d="M530 900 v-74 M530 868 h30 v32 M530 868 l-0 0"/>
+    </g>
+
+    <!-- ground -->
+    <path d="M160 902 C 380 896, 700 908, 920 898" stroke="#ece5df" stroke-width="1.2" fill="none" opacity=".5"/>
+
+    <!-- smoke: letters rising and dissolving into the sky -->
+    <g id="smoke" font-family="Cormorant Garamond" font-style="italic" fill="#ece5df"></g>
+  </svg>
+
+  <div class="top">Taller gratuito de escritura creativa</div>
+  <h1>
+    <span class="a"><i>la</i>casa vacía</span>
+    <span class="b"><i>de las</i>palabras</span>
+  </h1>
+  <p class="sub">Para reabrir tu creatividad, <b>volver a ti</b><br>y re-encontrarte con el juego de escribir.</p>
+
+  <div class="doors">
+    <div class="card">
+      <span class="num">i</span>
+      <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>Puerta de noche</div>
+      <div class="day">Viernes <i>30 de octubre</i></div>
+      <div class="hour">7:00 p. m. — 9:30 p. m.</div>
+    </div>
+    <div class="card">
+      <span class="num">ii</span>
+      <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>Puerta de mañana</div>
+      <div class="day">Sábado <i>31 de octubre</i></div>
+      <div class="hour">10:00 a. m. — 12:30 p. m.</div>
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="meta"><b>En vivo por Zoom</b><br>Gratis · registro previo</div>
+    <div class="cta"><div>Reserva tu lugar<small>cupos limitados</small></div><span style="font-size:26px">→</span></div>
+  </div>
+
+  <div class="note">— trae un cuaderno, una taza y <em>ganas de escribir.</em></div>
+
+  <svg class="grain" width="1080" height="1350"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .6  0 0 0 0 .55  0 0 0 0 .6  0 0 0 .5 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <div class="vignette"></div>
+</div>
+
+<script>
+  // deterministic randomness so every render is identical
+  let seed = 7; const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const words = ["palabra","recuerdo","silencio","ventana","eco","tú","polvo","luz","cuaderno","casa","voz","infancia","nombre","carta","olvido","juego","verso","lluvia","volver","nosotros","hoja","tinta","umbral","nostalgia","jardín","escribir","sueño","ausencia","pasillo","abrazo","taza","otoño","lápiz","memoria"];
+  const NS = "http://www.w3.org/2000/svg";
+
+  // the wall: rows of words, a few glowing a bit brighter
+  const wall = document.getElementById("wordwall");
+  for (let y = 482; y < 905; y += 17) {
+    let x = 320 + (r() * -40);
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("y", y); t.setAttribute("x", x);
+    let s = "";
+    while (s.length < 70) s += words[Math.floor(r() * words.length)] + "  ";
+    // brighten a few words using tspans
+    s.split("  ").forEach(w => {
+      const sp = document.createElementNS(NS, "tspan");
+      sp.textContent = w + "  ";
+      const special = w === "volver" || w === "escribir";
+      sp.setAttribute("fill", special ? "#d39a98" : "#ece5df");
+      sp.setAttribute("opacity", special ? .95 : (.16 + r() * .32).toFixed(2));
+      t.appendChild(sp);
+    });
+    wall.appendChild(t);
+  }
+
+  // smoke: "escribe" rising from the chimney, growing faint and loose
+  const smoke = document.getElementById("smoke");
+  "e s c r i b e".split(" ").forEach((ch, i) => {
+    const t = document.createElementNS(NS, "text");
+    const x = 668 + i * 26 + Math.sin(i * 1.3) * 10, y = 506 - i * 20;
+    t.setAttribute("x", x); t.setAttribute("y", y);
+    t.setAttribute("font-size", 30 - i * 2.2);
+    t.setAttribute("opacity", (0.85 - i * .1).toFixed(2));
+    t.setAttribute("transform", `rotate(${(r() - .5) * 40} ${x} ${y})`);
+    t.textContent = ch; smoke.appendChild(t);
+  });
+
+  // ghost words floating in the night around the house
+  const G = document.getElementById("ghosts");
+  const spots = [
+    [70,470,"ventana",18,.32],[150,560,"silencio",15,.26,1],[90,700,"eco",22,.30],[176,820,"recuerdo",15,.22],
+    [60,905,"infancia",14,.18],[830,560,"tú",22,.35],[880,660,"olvido",17,.30,1],[812,770,"polvo · luz",14,.24],
+    [905,860,"carta",16,.22],[230,470,"nombre",13,.18],[770,440,"lluvia",14,.2],[60,1230,"umbral",14,.16],[930,1240,"otoño",14,.16]
+  ];
+  spots.forEach(([x,y,w,fs,op,cross]) => {
+    const s = document.createElement("span");
+    s.className = "ghost" + (cross ? " x" : "");
+    s.textContent = w;
+    Object.assign(s.style, {left:x+"px", top:y+"px", fontSize:fs+"px", opacity:op, transform:`rotate(${((r()-.5)*24).toFixed(1)}deg)`});
+    G.appendChild(s);
+  });
+</script>
+</body>
+</html>
