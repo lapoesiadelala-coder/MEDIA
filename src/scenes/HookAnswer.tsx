@@ -98,9 +98,9 @@ export const HookAnswer: React.FC<{variant: Variant}> = ({variant}) => {
       {f >= 117 && (
         <>
           <At x={540} y={470}>
-            <div style={{position: 'relative', width: 400, height: 400, transform: `scale(${logoP}) rotate(${(1 - Math.min(logoP, 1)) * -18}deg)`}}>
+            <div style={{position: 'relative', width: 560, height: 460, transform: `scale(${logoP}) rotate(${(1 - Math.min(logoP, 1)) * -18}deg)`}}>
               <div style={{position: 'absolute', inset: -120, borderRadius: '50%', background: 'radial-gradient(circle, rgba(248,238,207,0.28), transparent 65%)'}} />
-              <Img src={staticFile('assets/logo_cream.png')} style={{width: 400, height: 400, position: 'relative'}} />
+              <Img src={staticFile('assets/logo_cream.png')} style={{width: 560, height: 460, objectFit: 'contain', position: 'relative'}} />
             </div>
           </At>
           <At x={540} y={860} style={{opacity: interpolate(f, [117, 120], [0, 1], clamp)}}>

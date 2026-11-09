@@ -126,8 +126,8 @@ export const Services: React.FC = () => {
         >
           <div
             style={{
-              width: 940,
-              height: 640,
+              width: 980,
+              height: 436,
               borderRadius: 40,
               overflow: 'hidden',
               border: `12px solid ${C.cream}`,
@@ -138,7 +138,7 @@ export const Services: React.FC = () => {
           >
             <Img
               src={staticFile('assets/van_eastman.jpg')}
-              style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${interpolate(f, [92, 150], [1.08, 1.2])}) translateX(${interpolate(f, [92, 150], [10, -20])}px)`}}
+              style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${interpolate(f, [92, 150], [1.03, 1.1])}) translateX(${interpolate(f, [92, 150], [12, -12])}px)`}}
             />
             <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 60%, rgba(22,33,31,0.55))'}} />
           </div>

@@ -6,33 +6,42 @@ import {Icon} from '../components/Icons';
 import {C, COPY, FONT, Variant} from '../theme';
 import {clamp, ease, pop} from '../lib';
 
-// Brush strokes that "draw" the badge on (mask paths in the logo's 1000×1000 space)
-const RING = 'M500 60 A440 440 0 1 1 499 60';
-const SCRIBBLE = 'M330 300 L690 330 L300 470 L720 470 L300 640 L700 620 L380 760 L640 760';
+// Logo geometry (logo PNG is 2429×1994 → 1000×821 viewBox). Badge circle centre/radius measured from the artwork.
+const LW = 1000;
+const LH = 821;
+const CX = 529;
+const CY = 410;
+const R = 402;
+const circle = (r: number) => `M${CX} ${CY - r} A${r} ${r} 0 1 1 ${CX - 0.5} ${CY - r}`;
 
 const LogoDraw: React.FC<{size: number}> = ({size}) => {
   const f = useCurrentFrame();
-  const ring = ease(f, [8, 34], [0, 1], 'inOut');
-  const scrib = ease(f, [26, 42], [0, 1], 'inOut');
+  const ring = ease(f, [6, 30], [0, 1], 'inOut');
+  const script = ease(f, [18, 38], [0, 1], 'inOut');
+  const inner = ease(f, [28, 44], [0, 1], 'inOut');
   const settle = ease(f, [40, 52]);
   const shine = interpolate(f, [44, 62], [-0.6, 1.6], clamp);
   // pen tip position on the ring
   const a = -Math.PI / 2 + ring * Math.PI * 2;
-  const tipX = 500 + Math.cos(a) * 440;
-  const tipY = 500 + Math.sin(a) * 440;
+  const tipX = CX + Math.cos(a) * R;
+  const tipY = CY + Math.sin(a) * R;
+  // pen tip on the script stroke
+  const sX = script * LW;
   const href = staticFile('assets/logo_green.png');
   return (
-    <div style={{position: 'relative', width: size, height: size, transform: `scale(${0.94 + settle * 0.06})`}}>
-      <svg width={size} height={size} viewBox="0 0 1000 1000" style={{overflow: 'visible'}}>
+    <div style={{position: 'relative', width: size, height: (size * LH) / LW, transform: `scale(${0.94 + settle * 0.06})`}}>
+      <svg width={size} height={(size * LH) / LW} viewBox={`0 0 ${LW} ${LH}`} style={{overflow: 'visible'}}>
         <defs>
           <mask id="logoMask">
-            <path d={RING} fill="none" stroke="#fff" strokeWidth={200} strokeLinecap="round" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - ring} />
-            <path d={SCRIBBLE} fill="none" stroke="#fff" strokeWidth={230} strokeLinecap="round" strokeLinejoin="round" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - scrib} />
-            <rect width={1000} height={1000} fill="#fff" opacity={settle} />
+            <path d={circle(R)} fill="none" stroke="#fff" strokeWidth={70} strokeLinecap="round" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - ring} />
+            <path d={`M-40 395 L${LW + 40} 395`} fill="none" stroke="#fff" strokeWidth={360} strokeLinecap="round" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - script} />
+            <path d={circle(285)} fill="none" stroke="#fff" strokeWidth={250} pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - inner} />
+            <rect width={LW} height={LH} fill="#fff" opacity={settle} />
           </mask>
         </defs>
-        <image href={href} width={1000} height={1000} mask="url(#logoMask)" />
-        {ring > 0 && ring < 1 && <circle cx={tipX} cy={tipY} r={22} fill={C.orange} opacity={0.9} />}
+        <image href={href} width={LW} height={LH} mask="url(#logoMask)" />
+        {ring > 0 && ring < 1 && <circle cx={tipX} cy={tipY} r={20} fill={C.orange} opacity={0.9} />}
+        {script > 0 && script < 1 && <circle cx={sX} cy={430} r={20} fill={C.orange} opacity={0.9} />}
       </svg>
       {/* shine sweep, clipped to the logo's alpha */}
       <div
@@ -77,7 +86,7 @@ export const CTA: React.FC<{variant: Variant}> = ({variant}) => {
         <AbsoluteFill style={{background: 'radial-gradient(circle at 50% 30%, rgba(217,79,43,0.10), transparent 55%)', opacity: 0.6 + breathe * 0.4}} />
         <Scene dur={120} exit={0} push={0.02}>
           <div style={{position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: lead ? 18 : 26, paddingBottom: 20}}>
-            <LogoDraw size={lead ? 380 : 420} />
+            <LogoDraw size={lead ? 480 : 540} />
             {lead && (
               <div style={{marginTop: 16}}>
                 <Words mode="mask" size={50} weight={700} color={C.green} segs={lead.split(' ').map((t, i) => ({t, line: i < 3 ? 0 : 1}))} start={34} stagger={2} />
